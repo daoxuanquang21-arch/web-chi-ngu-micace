@@ -1,0 +1,32 @@
+{
+  "name": "saas-review",
+  "version": "0.1.0",
+  "private": true,
+  "scripts": {
+    "dev": "next dev",
+    "build": "next build",
+    "start": "next start",
+    "lint": "eslint"
+  },
+  "dependencies": {
+    "@prisma/client": "^5.14.0",
+    "bcryptjs": "^3.0.3",
+    "date-fns": "^4.4.0",
+    "easymde": "^2.21.0",
+    "gray-matter": "^4.0.3",
+    "jose": "^6.2.3",
+    "next": "16.2.10",
+    "react": "19.2.4",
+    "react-dom": "19.2.4",
+    "react-quill": "^2.0.0",
+    "react-quill-new": "^3.8.3",
+    "react-simplemde-editor": "^5.2.0",
+    "remark": "^15.0.1",
+    "remark-html": "^16.0.1"
+  },
+  "devDependencies": {
+    "eslint": "^9",
+    "eslint-config-next": "16.2.10",
+    "prisma": "^5.14.0"
+  }
+}
