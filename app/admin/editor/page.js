@@ -1,5 +1,5 @@
 'use client';
-import { useState, useEffect, useMemo } from 'react';
+import { Suspense, useState, useEffect, useMemo } from 'react';
 import { useRouter, useSearchParams } from 'next/navigation';
 import dynamic from 'next/dynamic';
 import 'react-quill-new/dist/quill.snow.css';
@@ -26,7 +26,7 @@ const generateSlug = (text) => {
     .replace(/(^-|-$)+/g, '');
 };
 
-export default function Editor() {
+function EditorContent() {
   const router = useRouter();
   const searchParams = useSearchParams();
   const id = searchParams.get('id');
@@ -203,5 +203,13 @@ export default function Editor() {
         </div>
       </form>
     </div>
+  );
+}
+
+export default function Editor() {
+  return (
+    <Suspense fallback={<div>Loading editor...</div>}>
+      <EditorContent />
+    </Suspense>
   );
 }
