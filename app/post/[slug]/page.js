@@ -20,15 +20,17 @@ export default async function Post({ params }) {
       <div className="grid grid-cols-3">
         <main className="main-content-area" style={{ gridColumn: 'span 2' }}>
           <article>
-            <Link href={`/category/${postData.category}`}>
-              <span className="bg-accent" style={{ color: '#fff', padding: '5px 10px', fontSize: '14px', textTransform: 'uppercase', fontWeight: 'bold' }}>
-                {postData.category.replace('-', ' ')}
-              </span>
-            </Link>
+            {postData.category && (
+              <Link href={`/category/${postData.category.slug}`}>
+                <span className="bg-accent" style={{ color: '#fff', padding: '5px 10px', fontSize: '14px', textTransform: 'uppercase', fontWeight: 'bold' }}>
+                  {postData.category.name}
+                </span>
+              </Link>
+            )}
             <h1 style={{ fontSize: '42px', marginTop: '20px', marginBottom: '20px' }}>{postData.title}</h1>
             
             <div className="post-meta" style={{ display: 'flex', gap: '20px', marginBottom: '30px', color: '#555', fontSize: '14px', borderTop: '1px solid #eee', borderBottom: '1px solid #eee', padding: '10px 0' }}>
-              <span>By <strong>{postData.author}</strong></span>
+              <span>By <strong>{postData.author?.username || 'Admin'}</strong></span>
               <span>{postData.date}</span>
             </div>
 
