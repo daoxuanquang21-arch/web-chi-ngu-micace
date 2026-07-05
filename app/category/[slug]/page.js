@@ -1,13 +1,12 @@
-import { getSortedPostsData } from '@/lib/posts';
+import { getSortedPostsData, getCategories } from '@/lib/posts';
 import Link from 'next/link';
 import Sidebar from '@/components/Sidebar';
 
 export async function generateStaticParams() {
-  const posts = await getSortedPostsData();
-  const categories = [...new Set(posts.map(post => post.category))];
+  const categories = await getCategories();
   
   return categories.map((category) => ({
-    slug: category,
+    slug: category.slug,
   }));
 }
 
@@ -15,7 +14,7 @@ export default async function Category({ params }) {
   // Await the params object before using its properties
   const { slug } = await params;
   const allPosts = await getSortedPostsData();
-  const categoryPosts = allPosts.filter(post => post.category === slug);
+  const categoryPosts = allPosts.filter(post => post.category?.slug === slug);
   const categoryName = slug.replace('-', ' ');
 
   return (
