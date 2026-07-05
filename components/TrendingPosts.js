@@ -22,10 +22,14 @@ export default async function TrendingPosts() {
               </div>
             </Link>
             <div className="trending-post-meta">
-              <Link href={`/category/${post.category}`}>
-                {post.category.replace('-', ' ')}
-              </Link>
-              {' / '}
+              {post.category && (
+                <>
+                  <Link href={`/category/${post.category.slug}`}>
+                    {post.category.name}
+                  </Link>
+                  {' / '}
+                </>
+              )}
               <span>{post.date}</span>
             </div>
             <h3 className="trending-post-title">
